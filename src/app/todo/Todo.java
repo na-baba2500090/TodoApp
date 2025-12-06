@@ -6,9 +6,14 @@ public class Todo {
 	private int priority; //優先度
 	
 	//コンストラクタ
-	public Todo(String title, boolean done) {
+	public Todo(String title, boolean done, int priority) {
 		this.title = title;
 		this.done = done;
+		this.priority = priority;
+	}
+	public Todo(String title, boolean done) {
+		//インスタンス生成時に優先度の指定がなければ「中」で作る
+		this(title, done, 2);
 	}
 	public Todo(String title) {
 		this(title, false);

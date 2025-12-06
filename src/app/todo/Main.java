@@ -35,14 +35,14 @@ public class Main {
 				//タスク名の設定
 				System.out.println("ToDoを入力してください。＞＞");
 				title = scanner.nextLine();
-				Todo todo = new Todo(title);
 				//重要度の設定
 				System.out.println("【1】高　【2】中　【3】低");
 				System.out.println("優先度を選択してください＞＞");
 				input = Integer.parseInt(scanner.nextLine());
-				todo.setPriority(input);
+				//Todoインスタンスを生成し、リストに追加
+				Todo todo = new Todo(title, false, input);
 				todos.add(todo);
-				System.out.println("優先度を変更しました。");
+				System.out.println("タスクを作成しました。");
 			}
 			//【2】一覧表示（全てのToDoを表示）
 			case 2 -> {
@@ -142,8 +142,8 @@ public class Main {
 				//要素2をタイトルとして、Todoインスタンスを作成しlistに追加
 				boolean done = parts[0].equals("1");
 				String title = parts[1];
-				String priority = parts[2];
-				list.add(new Todo(title, done));
+				int priority = Integer.parseInt(parts[2]);
+				list.add(new Todo(title, done, priority));
 			}
 			System.out.println("前回のToDoを読み込みました");
 		}catch(IOException e) {
